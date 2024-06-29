@@ -1,4 +1,4 @@
-<h1>Hi, I'm Cas! <br/><a href="https://github.com/1smartcontactsguy">Smart Contract Developer & Solidity Programmer</a></h1>
+<h1>Hi, I'm Cas! <br/><a href="https://github.com/1smartcontractguy">Smart Contract Developer & Solidity Programmer</a></h1>
 
 <h2>👨‍💻 Smart Contract Projects:</h2>
 
