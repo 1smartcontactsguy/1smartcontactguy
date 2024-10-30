@@ -1,0 +1,29 @@
+name: My CI Workflow
+
+on:
+  push:
+    branches: [ "develop" ]  # Change branch as needed
+  pull_request:
+    branches: [ "develop" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      - name: Install dependencies
+        run: npm install  # Example for Node.js
+
+      - name: Run tests
+        run: npm test  # Example for Node.js
+
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
