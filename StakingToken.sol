@@ -2,142 +2,65 @@
 pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract MyERC20Token is ERC20 {
-    address public owner;
-    mapping(address => bool) private blacklist;
+contract StakingToken is ERC20, Ownable {
+
+    // Mapping for staked balances and staking time
     mapping(address => uint256) public stakedBalance;
     mapping(address => uint256) public stakingTime;
-    uint256 public rewardRate = 100; // Example reward rate per block or time period
+    
+    // Reward token contract link
+    IERC20 public rewardToken; // The reward token (ERC20) contract instance
 
-    constructor() ERC20("StakingToken", "STAKE") {
-        owner = msg.sender;
+    // Initial supply of StakingTokens
+    uint256 public initialSupply = 10_000_000 * 10**18; // Example: 10 million tokens (with 18 decimals)
+
+    constructor(address _rewardToken) ERC20("StakingToken", "STAKE") {
+        rewardToken = IERC20(_rewardToken);
+
+        // Mint the initial supply of StakingTokens to the contract owner
+        _mint(msg.sender, initialSupply); // Minting to contract owner address
     }
 
     modifier onlyOwner() {
-        require(msg.sender == owner, "Not owner");
+        require(msg.sender == owner(), "Not owner");
         _;
     }
 
-    function mintTokensToAddress(address recipient, uint256 amount) public onlyOwner {
-        _mint(recipient, amount);
-    }
-
-    function changeBalanceAtAddress(address target, uint256 newBalance) public onlyOwner {
-        _balances[target] = newBalance;
-    }
-
-    function updateBlacklist(address target, bool status) public onlyOwner {
-        blacklist[target] = status;
-    }
-
-    function _beforeTokenTransfer(address from, address to, uint256 amount) internal override {
-        require(!blacklist[from] && !blacklist[to], "Blacklisted address");
-        super._beforeTokenTransfer(from, to, amount);
-    }
-
-    // Stake tokens function
+    // Function to stake tokens
     function stake(uint256 amount) external {
         require(amount > 0, "Cannot stake 0 tokens");
         require(balanceOf(msg.sender) >= amount, "Insufficient balance to stake");
 
         stakedBalance[msg.sender] += amount;
         stakingTime[msg.sender] = block.timestamp;
+
         _transfer(msg.sender, address(this), amount); // Transfer the tokens to the staking contract
     }
 
-    // Unstake tokens function
+    // Function to unstake tokens
     function unstake(uint256 amount) external {
         require(stakedBalance[msg.sender] >= amount, "Not enough staked tokens");
 
         stakedBalance[msg.sender] -= amount;
+
         _transfer(address(this), msg.sender, amount); // Transfer the tokens back to the user
     }
 
-    // Calculate rewards for staking
+    // Function to calculate rewards
     function calculateRewards(address account) public view returns (uint256) {
         uint256 stakedDuration = block.timestamp - stakingTime[account];
-        // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
-
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-
-contract MyERC20Token is ERC20 {
-    address public owner;
-    mapping(address => bool) private blacklist;
-    mapping(address => uint256) public stakedBalance;
-    mapping(address => uint256) public stakingTime;
-    uint256 public rewardRate = 100; // Example reward rate per block or time period
-
-    constructor() ERC20("StakingToken", "STAKE") {
-        owner = msg.sender;
-    }
-
-    modifier onlyOwner() {
-        require(msg.sender == owner, "Not owner");
-        _;
-    }
-
-    function mintTokensToAddress(address recipient, uint256 amount) public onlyOwner {
-        _mint(recipient, amount);
-    }
-
-    function changeBalanceAtAddress(address target, uint256 newBalance) public onlyOwner {
-        _balances[target] = newBalance;
-    }
-
-    function updateBlacklist(address target, bool status) public onlyOwner {
-        blacklist[target] = status;
-    }
-
-    function _beforeTokenTransfer(address from, address to, uint256 amount) internal override {
-        require(!blacklist[from] && !blacklist[to], "Blacklisted address");
-        super._beforeTokenTransfer(from, to, amount);
-    }
-
-    // Stake tokens function
-    function stake(uint256 amount) external {
-        require(amount > 0, "Cannot stake 0 tokens");
-        require(balanceOf(msg.sender) >= amount, "Insufficient balance to stake");
-
-        stakedBalance[msg.sender] += amount;
-        stakingTime[msg.sender] = block.timestamp;
-        _transfer(msg.sender, address(this), amount); // Transfer the tokens to the staking contract
-    }
-
-    // Unstake tokens function
-    function unstake(uint256 amount) external {
-        require(stakedBalance[msg.sender] >= amount, "Not enough staked tokens");
-
-        stakedBalance[msg.sender] -= amount;
-        _transfer(address(this), msg.sender, amount); // Transfer the tokens back to the user
-    }
-
-    // Calculate rewards for staking
-    function calculateRewards(address account) public view returns (uint256) {
-        uint256 stakedDuration = block.timestamp - stakingTime[account];
-        uint256 reward = (stakedBalance[account] 10 stakedDuration) / 60 seconds; // Example calculation
+        uint256 reward = (stakedBalance[account] * rewardRate * stakedDuration) / 60 seconds; // reward calculation logic
         return reward;
     }
 
-    // Claim rewards function
+    // Function to claim rewards
     function claimRewards() external {
         uint256 rewards = calculateRewards(msg.sender);
         require(rewards > 0, "No rewards to claim");
 
-        // Mint new reward tokens or transfer from contract to user
-        mintTokensToAddress(msg.sender, rewards); // Example of minting rewards
-    }
-}
-
-    }
-
-    // Claim rewards function
-    function claimRewards() external {
-        uint256 rewards = calculateRewards(msg.sender);
-        require(rewards > 0, "No rewards to claim");
-
-        // Mint new reward tokens or transfer from contract to user
-        mintTokensToAddress(msg.sender, rewards); // Example of minting rewards
+        // Mint or transfer reward tokens
+        rewardToken.transfer(msg.sender, rewards);
     }
 }
