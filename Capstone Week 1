@@ -7,13 +7,145 @@ Define your Audience: This application is designed for people who are interested
 
 Who is using my application: The users of this platform are crypto investors who seek to leverage the benefits of staking. Whether they are new to staking or experienced investors, this application will offer an accessible and efficient way to earn rewards by locking up their tokens.
 
-Outline the content of the application
+Outline the content of the application-                                                            
+Landing Page (Home Page)
+Header Section:
+
+App Name: Staking Smart
+Short tagline: Smart Staking. Smart Rewards.
+Navigation Links: Home, How it Works, Sign Up/Log In, Dashboard
+Call to Action (CTA): "Start Staking Smart Now"
+Introductory Information:
+
+Brief description of the staking app and its benefits.
+Highlight features: Secure staking, Passive rewards, Real-time tracking.
+User Testimonials/Success Stories.
+How Staking Works Section:
+
+Explanation of staking Ethereum.
+Process flow (Stake Tokens → Earn Rewards → Unstake Tokens).
+Reward calculation example with a visual chart.
+Footer:
+
+Contact information.
+Social media links.
+Legal/Privacy Policy.
+
+2. Sign Up / Log In Page
+Sign Up Section:
+
+Fields: Username, Email, Password, Confirm Password.
+CTA: "Create Account".
+Log In Section:
+
+Fields: Email, Password.
+CTA: "Log In".
+Forgot Password Section:
+
+Option to reset password via email.
+
+3. Dashboard (User Home Page)
+Header Section:
+
+Welcome Message (e.g., "Welcome, [User Name]!").
+Navigation: Home, Stake Tokens, Rewards, Account Settings.
+Staking Information:
+
+Staked balance overview.
+Total earned rewards so far.
+Staking status (active, inactive).
+Stake Tokens Section:
+
+Input field to stake tokens (amount of ETH).
+Option to connect wallet (MetaMask, WalletConnect, etc.).
+CTA: "Stake Smart Now".
+Claim Rewards Section:
+
+Display the accumulated rewards.
+Button to claim rewards: "Claim Your Smart Rewards".
+Reward calculation displayed (time staked, tokens staked).
+Unstake Tokens Section:
+
+Input field to unstake tokens (amount).
+CTA: "Unstake Smart Now".
+Information about unstaking fees (if applicable).
+
+4. How it Works Page
+Detailed breakdown of staking mechanics:
+What staking means.
+Why staking Ethereum is profitable.
+Risks involved with staking (e.g., liquidity, market volatility).
+Reward calculation model (time-based rewards, fixed rates, etc.).
+
+5. Account Settings Page
+Profile Information:
+Editable fields for user info: Name, Email, Password, etc.
+Wallet Integration:
+Option to connect or disconnect Ethereum wallet (MetaMask, etc.).
+Security Settings:
+Two-factor authentication setup.
+Email notifications for staking rewards.
+
+6. Reward History Page
+Transaction Log:
+History of stakes, rewards claimed, and unstaking actions.
+Filters: Date, transaction type (stake/unstake), amount.
+Reward Stats:
+Graphical display of earned rewards over time.
+Annualized return on investment (ROI).
+
+7. Admin Dashboard (for app management)
+User Management:
+View and manage registered users.
+Total staked ETH across all users.
+Reward Settings:
+Admin can adjust reward rate.
+Set staking periods or reward caps.
+
+8. FAQs Section
+Answer common user questions, such as:
+"What is staking?"
+"How do I earn rewards?"
+"How can I withdraw my rewards?"
+"What are the risks of staking?"
+
+9. Legal/Privacy Page
+Terms of Service:
+
+Legal terms users must agree to for using the platform.
+Privacy Policy:
+
+Information on how user data is protected and used.
+
+10. Footer (on every page)
+Links to:
+Social Media Accounts (Twitter, Telegram, etc.)
+Support or Contact Us
+Legal Terms
+Disclaimer or Risk Notice (e.g., "Staking crypto involves risk. Please proceed with caution.").
+
+Key Features of the App:
+Stake Ethereum: Users can stake their ETH on the platform and start earning rewards.
+Rewards Calculation: Users earn rewards based on the amount of ETH staked and the staking duration.
+Unstaking: Allows users to withdraw their staked ETH whenever they want (with certain conditions).
+Claim Rewards: Users can claim their staking rewards at any time or periodically.
+Wallet Integration: Easy integration with popular crypto wallets like MetaMask.
+Security: High-level security to protect user funds and personal information.
+
 What do I want on each page? (text / pics / images / navigation)
+
 What do I want the functionality of each page to be?
+
 What is the purpose of my application?
+The purpose this application, Staking Smart, is to provide a platform where users can stake their tokens (specifically, ERC-20 tokens), earn rewards, and have full control over their staking and rewards process.
+
 What business problem or real world problem am I going to be solving?
+In essence, Staking Smart is solving the problem of making cryptocurrency staking accessible, secure, and transparent for a broader audience, while also empowering users to earn passive income through the staking process. The app aims to build trust, simplify the user experience, and create a more seamless, engaging platform for crypto investors looking to grow their portfolios.
+
 Define the attributes of your website
-Color Palette
+The Staking Smart application focuses on simplicity, transparency, and security, while also offering a user-friendly experience for those interested in staking and earning rewards. It’s a platform where users can easily stake ERC-20 tokens, track their rewards in real-time, and receive continuous support and education as they learn about and engage with cryptocurrency staking.
+
+Color Palette-Primary Color - Electric Blue (#007BFF)
 Images
 Fonts
 Logos
