@@ -7,7 +7,7 @@ function greetCustomer {
     }
 }
 
-function getPizzaOrder(size, crust, ...toppings {
+function getPizzaOrder(size, crust, ...toppings) {
     console.log(`One ${size} ${crust} crust pizza with ${toppings.join(', ')} coming up!`);
     return [size, crust, toppings];
 }
@@ -22,7 +22,7 @@ function preparePizza([size, crust, toppings]) {
 }
 
 function servePizza(pizza) {
-    console.log(`Order up! Here's your ${pizza.size} ${pizza.crust} crust pizza with ${pizza.toppings.join(', ')}. Enjoy!`);
+    console.log(`Order up! Here's your ${pizza.size} ${pizza.crust} crust pizza with ${pizza.toppings.join(', ')}. Enjoy!`)
     return pizza;
 }
 
