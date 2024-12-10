@@ -1,6 +1,6 @@
 const pizzaToppings = ['ham', 'applewood bacon', 'seasoned pork', 'pepperoni'];
 
-function greetCustomer {
+function greetCustomer() {
     console.log("Welcome to Pizza House, our toppings are:");
     for (let topping of pizzaToppings) {
         console.log(`- ${topping}`);
